@@ -1,0 +1,16 @@
+body {
+}
+
+pre.prettyprint {
+	font-size: 11px;
+	line-height: 13px;
+	tab-size: 4;
+}
+
+.navbar select {
+	width: 100%;
+}
+
+.nav-list li {
+	/*white-space: nowrap;*/
+}
