@@ -46,7 +46,7 @@ $(function () {
 	});
 
 	$('#course').change(function() {
-		$('#class, #sheet, #exercise, #exercise_part, #group, #file').val('');
+		$('#class, #sheet, #exercise, #exercise_part, #group, #file').empty().val('');
 		$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
 				$('#class').append($('<option>').val(key).html(val));
@@ -56,7 +56,7 @@ $(function () {
 	});
 
 	$('#class').change(function() {
-		$('#sheet, #exercise, #exercise_part, #group, #file').val('');
+		$('#sheet, #exercise, #exercise_part, #group, #file').empty().val('');
 		$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
 				$('#sheet').append($('<option>').val(key).html(val));
@@ -66,7 +66,7 @@ $(function () {
 	});
 
 	$('#sheet').change(function() {
-		$('#exercise, #exercise_part, #group, #file').val('');
+		$('#exercise, #exercise_part, #group, #file').empty().val('');
 		$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
 				$('#exercise').append($('<option>').val(key).html(val));
@@ -76,7 +76,7 @@ $(function () {
 	});
 
 	$('#exercise').change(function() {
-		$('#exercise_part, #group, #file').val('');
+		$('#exercise_part, #group, #file').empty().val('');
 		$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
 				$('#exercise_part').append($('<option>').val(key).html(val));
@@ -87,7 +87,7 @@ $(function () {
 
 	$('#exercise_part').change(function() {
 		$('#groups li').remove();
-		$('#group, #file').val('');
+		$('#group, #file').empty().val('');
 		$.getJSON("ajax/get_groups.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
 				$('#groups').append(
