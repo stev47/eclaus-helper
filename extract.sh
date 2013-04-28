@@ -4,7 +4,7 @@ target=data/
 
 dir=$(dirname $1)
 zipname=$(basename $1)
-name=${zipname%%.*}
+name=$(unzip -l $zipname | grep -Po "EClausAbgaben-[^\/]+(?=\/\.identity\.eclaus)")
 
 #echo $name;
 
