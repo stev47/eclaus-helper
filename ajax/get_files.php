@@ -2,11 +2,14 @@
 
 require "common.php";
 
-$files = scandir($path);
-$files = array_filter($files, function ($v) use ($path) {
-	return substr($v, 0, 1) != "." && !is_dir($path . '/' . $v); 
-});
-$files = array_values($files);
+if ($files = @scandir($path)) {
+	$files = array_filter($files, function ($v) use ($path) {
+		return substr($v, 0, 1) != "." && !is_dir($path . '/' . $v); 
+	});
+	$files = array_values($files);
+} else {
+	$files = array();
+}
 
 $result = array();
 

@@ -7,7 +7,14 @@ var fn_group_click = function () {
 	$.getJSON("ajax/get_files.php", $('#navform').serializeArray()).done(function(data) {
 		$('#files li').remove();
 		$('#files_content').empty();
-		var i = 1;
+		var i = 0;
+		$('#files').append($('<li class="active">').append($('<a href="#tab-' + i + '" data-toggle="tab">').data('file', 'Abgabe').html('Abgabe')));
+		var pane = $('<div class="tab-pane active" id="tab-' + i + '">').appendTo($('#files_content'));
+		var codeel = $('<div class="well">').appendTo(pane);
+		codeel.load('ajax/get_return.php?' + $('#navform').serialize(), function () {
+		});
+		i++;
+
 		$.each(data, function(file, info) {
 			// Tab-buttons
 			$('#files').append($('<li>').append($('<a href="#tab-' + i + '" data-toggle="tab">').data('file', file).html(file)));
