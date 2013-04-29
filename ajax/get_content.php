@@ -9,4 +9,4 @@ if (empty($_GET['file']))
 $path .= $_GET['file'];
 
 
-echo \ForceUTF8\Encoding::toUTF8(file_get_contents($path));
+echo htmlspecialchars(\ForceUTF8\Encoding::toUTF8(file_get_contents($path)));
