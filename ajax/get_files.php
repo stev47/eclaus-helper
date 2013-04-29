@@ -11,7 +11,7 @@ $files = array_values($files);
 $result = array();
 
 foreach ($files as $file) {
-	if (preg_match('/\.(java|c|cpp)$/i', $file, $matches)) {
+	if (preg_match('/\.(java|c|cpp|txt)$/i', $file, $matches)) {
 		$result[$file] = array(
 			'type' => 'source',
 			'lang' => $matches[1]

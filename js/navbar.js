@@ -17,6 +17,11 @@ var fn_group_click = function () {
 			switch (info.type) {
 				case 'source':
 					var codeel = $('<pre class="prettyprint linenums">').appendTo(pane);
+					if (info.lang == 'txt') {
+						codeel.addClass('nocode');
+					} else {
+						codeel.addClass('lang-' + info.lang);
+					}
 					$('#file').val(file);
 					codeel.load('ajax/get_content.php?' + $('#navform').serialize(), function () {
 						$(this).removeClass('prettyprinted');
