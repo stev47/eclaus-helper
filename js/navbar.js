@@ -16,7 +16,7 @@ var fn_group_click = function () {
 
 			switch (info.type) {
 				case 'source':
-					var codeel = $('<pre class="prettyprint">').appendTo(pane);
+					var codeel = $('<pre class="prettyprint linenums">').appendTo(pane);
 					$('#file').val(file);
 					codeel.load('ajax/get_content.php?' + $('#navform').serialize(), function () {
 						$(this).removeClass('prettyprinted');
