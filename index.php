@@ -12,6 +12,11 @@
 
 		<link href="https://google-code-prettify.googlecode.com/svn/loader/prettify.css" rel="stylesheet">
 		<script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+
+		<script src="http://mozilla.github.io/pdf.js/build/pdf.js"></script>
+		<script type="text/javascript">
+			PDFJS.workerSrc = 'http://mozilla.github.io/pdf.js/build/pdf.js';
+		</script>
 		<style type="text/css">
 			@import url("css/style.css");
 		</style>

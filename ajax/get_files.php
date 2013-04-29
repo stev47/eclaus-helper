@@ -24,6 +24,11 @@ foreach ($files as $file) {
 			'type' => 'image',
 			'path' => $path_from_root . '/' . $file
 		);
+	} else if (preg_match('/\.(pdf)$/i', $file, $matches)) {
+		$result[$file] = array(
+			'type' => 'pdf',
+			'path' => $path_from_root . '/' . $file
+		);
 	} else {
 		$result[$file] = array(
 			'type' => 'other',

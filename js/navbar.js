@@ -38,6 +38,26 @@ var fn_group_click = function () {
 				case 'image':
 					$('<img class="img-rounded">').appendTo(pane).attr('src', escape(info.path));
 					break;
+				case 'pdf':
+					$('<canvas id="pdf-canvas">').appendTo(pane);
+
+					PDFJS.getDocument(escape(info.path)).then(function(pdf) {
+						pdf.getPage(1).then(function(page) {
+							var scale = 1;
+							var viewport = page.getViewport(scale);
+
+							var canvas = document.getElementById('pdf-canvas');
+							var context = canvas.getContext('2d');
+							canvas.height = viewport.height;
+							canvas.width = viewport.width;
+
+							var renderContext = {
+								canvasContext: context,
+								viewport: viewport
+							};
+							page.render(renderContext);
+						});
+					});
 				default:
 					$('<a>').attr('href', escape(info.path)).html(file).appendTo(pane);
 			}
