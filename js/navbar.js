@@ -43,7 +43,7 @@ var fn_group_click = function () {
 
 					PDFJS.getDocument(escape(info.path)).then(function(pdf) {
 						pdf.getPage(1).then(function(page) {
-							var scale = 1;
+							var scale = 1.1;
 							var viewport = page.getViewport(scale);
 
 							var canvas = document.getElementById('pdf-canvas');
