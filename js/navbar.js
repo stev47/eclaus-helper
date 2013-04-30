@@ -10,7 +10,7 @@ var fn_group_click = function () {
 		var i = 0;
 		$('#files').append($('<li class="active">').append($('<a href="#tab-' + i + '" data-toggle="tab">').data('file', 'Abgabe').html('Abgabe')));
 		var pane = $('<div class="tab-pane active" id="tab-' + i + '">').appendTo($('#files_content'));
-		var codeel = $('<div class="well">').appendTo(pane);
+		var codeel = $('<pre>').appendTo(pane);
 		codeel.load('ajax/get_return.php?' + $('#navform').serialize(), function () {
 		});
 		i++;

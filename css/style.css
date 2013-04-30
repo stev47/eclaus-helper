@@ -1,9 +1,13 @@
 body {
 }
 
-pre.prettyprint {
+pre {
 	font-size: 11px;
 	line-height: 13px;
+	tab-size: 8;
+}
+
+pre.prettyprint {
 	tab-size: 4;
 }
 pre.prettyprint li {
