@@ -15,7 +15,7 @@ mv -f $target/tmp/$name/* $target/tmp/
 rm -rf $target/tmp/$name
 
 for f in $(find $target/tmp -name '*.zip'); do 
-	unzip -qqq -o -j $f -d $(dirname $f) -x *.class *.core.prefs;
+	unzip -qqq -B -j $f -d $(dirname $f) -x *.class *.core.prefs;
 	rm $f;
 done
 

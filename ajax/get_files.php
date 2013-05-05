@@ -14,17 +14,17 @@ if ($files = @scandir($path)) {
 $result = array();
 
 foreach ($files as $file) {
-	if (preg_match('/\.(java|c|cpp|txt)$/i', $file, $matches)) {
+	if (preg_match('/\.(java|c|cpp|txt)(~[0-9]*)?$/i', $file, $matches)) {
 		$result[$file] = array(
 			'type' => 'source',
 			'lang' => $matches[1]
 		);
-	} else if (preg_match('/\.(jpg|png|svg)$/i', $file, $matches)) {
+	} else if (preg_match('/\.(jpg|png|svg)(~[0-9]*)?$/i', $file, $matches)) {
 		$result[$file] = array(
 			'type' => 'image',
 			'path' => $path_from_root . '/' . $file
 		);
-	} else if (preg_match('/\.(pdf)$/i', $file, $matches)) {
+	} else if (preg_match('/\.(pdf)(~[0-9]*)?$/i', $file, $matches)) {
 		$result[$file] = array(
 			'type' => 'pdf',
 			'path' => $path_from_root . '/' . $file
