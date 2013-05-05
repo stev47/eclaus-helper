@@ -29,6 +29,9 @@ foreach ($files as $file) {
 			'type' => 'pdf',
 			'path' => $path_from_root . '/' . $file
 		);
+	// Ignored files
+	} else if (preg_match('/\.class$/i', $file, $matches)) {
+		continue;
 	} else {
 		$result[$file] = array(
 			'type' => 'other',
