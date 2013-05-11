@@ -1,3 +1,8 @@
+var clear_files = function () {
+	$('#files li').remove();
+	$('#files_content').empty();
+};
+
 var fn_group_click = function () {
 	$('#groups li').removeClass('active');
 	$(this).parent().addClass('active');
@@ -5,8 +10,7 @@ var fn_group_click = function () {
 	$('#group').val($(this).val());
 
 	$.getJSON("ajax/get_files.php", $('#navform').serializeArray()).done(function(data) {
-		$('#files li').remove();
-		$('#files_content').empty();
+		clear_files();
 		var i = 0;
 		$('#files').append($('<li class="active">').append($('<a href="#tab-' + i + '" data-toggle="tab">').data('file', 'Abgabe').html('Abgabe')));
 		var pane = $('<div class="tab-pane active" id="tab-' + i + '">').appendTo($('#files_content'));
@@ -71,6 +75,7 @@ var fn_group_click = function () {
 
 $(function () {
 	$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray() ).done(function(data) {
+		clear_files();
 		$.each(data, function(key, val) {
 			$('#course').append($('<option>').val(key).html(val));
 		});
@@ -78,6 +83,7 @@ $(function () {
 	});
 
 	$('#course').change(function() {
+		clear_files();
 		$('#class, #sheet, #exercise, #exercise_part, #group, #file').empty().val('');
 		$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
@@ -88,6 +94,7 @@ $(function () {
 	});
 
 	$('#class').change(function() {
+		clear_files();
 		$('#sheet, #exercise, #exercise_part, #group, #file').empty().val('');
 		$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
@@ -98,6 +105,7 @@ $(function () {
 	});
 
 	$('#sheet').change(function() {
+		clear_files();
 		$('#exercise, #exercise_part, #group, #file').empty().val('');
 		$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
@@ -108,6 +116,7 @@ $(function () {
 	});
 
 	$('#exercise').change(function() {
+		clear_files();
 		$('#exercise_part, #group, #file').empty().val('');
 		$.getJSON("ajax/get_dirs.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
@@ -120,6 +129,7 @@ $(function () {
 	$('#exercise_part').change(function() {
 		$('#groups li').remove();
 		$('#group, #file').empty().val('');
+		clear_files();
 		$.getJSON("ajax/get_groups.php", $('#navform').serializeArray()).done(function(data) {
 			$.each(data, function(key, val) {
 				$('#groups').append(
