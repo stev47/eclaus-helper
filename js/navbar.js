@@ -13,7 +13,7 @@ var fn_group_click = function () {
 		clear_files();
 		var i = 0;
 		$('#files').append($('<li class="active">').append($('<a href="#tab-' + i + '" data-toggle="tab">').data('file', 'Abgabe').html('Abgabe')));
-		var pane = $('<div class="tab-pane active" id="tab-' + i + '">').appendTo($('#files_content'));
+		var pane = $('<div class="tab-pane fade active in" id="tab-' + i + '">').appendTo($('#files_content'));
 		var codeel = $('<pre>').appendTo(pane);
 		codeel.load('ajax/get_return.php?' + $('#navform').serialize(), function () {
 		});
@@ -23,7 +23,7 @@ var fn_group_click = function () {
 			// Tab-buttons
 			$('#files').append($('<li>').append($('<a href="#tab-' + i + '" data-toggle="tab">').data('file', file).html(file)));
 			// Tab-panes
-			var pane = $('<div class="tab-pane" id="tab-' + i + '">').appendTo($('#files_content'));
+			var pane = $('<div class="tab-pane fade" id="tab-' + i + '">').appendTo($('#files_content'));
 
 			switch (info.type) {
 				case 'source':
