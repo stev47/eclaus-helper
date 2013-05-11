@@ -20,7 +20,9 @@ for f in $(find $target/tmp -name '*.zip'); do
 done
 
 
+
 cp -R $target/tmp/* $target/
+chmod -R a+rw $target/
 rm -rf $target/tmp/*
 rm -rf $target/tmp
 

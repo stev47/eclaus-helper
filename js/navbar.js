@@ -15,8 +15,15 @@ var fn_group_click = function () {
 		$('#files').append($('<li class="active">').append($('<a href="#tab-' + i + '" data-toggle="tab">').data('file', 'Abgabe').html('Abgabe')));
 		var pane = $('<div class="tab-pane fade active in" id="tab-' + i + '">').appendTo($('#files_content'));
 		var codeel = $('<pre>').appendTo(pane);
-		codeel.load('ajax/get_return.php?' + $('#navform').serialize(), function () {
+		codeel.load('ajax/get_return.php?' + $('#navform').serialize());
+
+		var correctel = $('div#correction');
+		correctel.load('ajax/get_correction.php?' + $('#navform').serialize());
+		var pointsel = $('#group_points');
+		$.get('ajax/get_points.php?' + $('#navform').serialize(), function (data) {
+			pointsel.val(data);
 		});
+
 		i++;
 
 		$.each(data, function(file, info) {
@@ -141,4 +148,19 @@ $(function () {
 		});
 	});
 
+
+	$('#correction_submit').click(function() {
+		$.post('ajax/set_correction.php?' + $('#navform').serialize(), 
+			   {   correction: $('#correction').html(),
+				   group_points: $('#group_points').val()  });
+	})
+
+
+	$('#correction').wysiwyg({
+		hotKeys: {
+			'return': 'insertparagraph',
+			   'ctrl+b meta+b': 'insertparagraph',
+    'ctrl+i meta+i': 'italic'
+		}
+	});
 })
