@@ -11,6 +11,9 @@ Getting started
 2. "Korrekturarchiv herunterladen", dabei beide Optionen für die Ordnerstruktur aktivieren.
 3. `./extract.sh EClausAbgaben-xxx.zip`
 4. `index.php` im Browser öffnen.
+5. Korrigieren
+6. `./repackage.sh data/pfad/zum/aufgabenblatt/`
+7. `upload.zip` auf eClaus als Korrekturarchiv hochladen.
 
 Beschreibung
 ------------
@@ -20,6 +23,10 @@ Beschreibung
 Im Webinterface kann zwischen den vorhandenen Kursen/Übungsgruppen/Aufgabenblättern/Aufgaben/Teilaufgaben in der Navigation oben gewechselt werden, die Gruppen werden links gewählt und die Dateien in den Reitern oben unter der Navigation.
 
 Quellcode- und Bild-Dateien können direkt im Webinterfae angeschaut werden, zu allen anderen Dateien wird ein Download-Link angeboten.
+
+Korrekturtext kann oben über den Dateien angegeben werden und zusammen mit den Punkten (kleines Textfeld oben) gespeichert werden.
+
+`repackage.sh PFAD` packt die Korrekturtexte und die Punkte aus dem genannten PFAD in ein zip-Archiv `upload.zip`, das auf eClaus als „Korrekturarchiv“ hochgeladen werden kann.
 
 Java-Programme testen
 ---------------------
