@@ -7,7 +7,7 @@ $path_points = $path . '../points.eclaus.txt';
 $path .= '../correction.eclaus.txt';
 
 if (isset($_POST['correction'])) {
-	file_put_contents($path, \ForceUTF8\Encoding::toUTF8($_POST['correction']));
+	file_put_contents($path, "<div>" . \ForceUTF8\Encoding::toUTF8($_POST['correction']) . "</div>");
 
 	$points = file_get_contents($path_points);
 	if (!preg_match('/^GROUP-GRADING\=.*$/m', $points)) {
