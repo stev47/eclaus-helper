@@ -3,7 +3,7 @@
 require "common.php";
 require "../inc/Encoding.php";
 
-$path .= '../correction.eclaus.txt';
+$path = $path_group . '/correction.eclaus.txt';
 
 header('Content-Type: text/html');
 
