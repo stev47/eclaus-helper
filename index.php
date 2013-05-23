@@ -6,27 +6,25 @@
 
 		<title>eClaus - Helper</title>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-<link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+		<script src="lib/js/jquery.min.js"></script>
+		<link href="lib/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+		<link href="lib/css/font-awesome.css" rel="stylesheet">
+		<script src="lib/js/bootstrap.min.js"></script>
 
-<link href="https://google-code-prettify.googlecode.com/svn/loader/prettify.css" rel="stylesheet">
-<script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+		<link href="lib/css/prettify.css" rel="stylesheet">
+		<script src="lib/js/prettify.js"></script>
 
-<script src="http://mozilla.github.io/pdf.js/build/pdf.js"></script>
-<script type="text/javascript">
-PDFJS.workerSrc = 'http://mozilla.github.io/pdf.js/build/pdf.js';
-</script>
-<script src="https://github.com/jeresig/jquery.hotkeys/raw/master/jquery.hotkeys.js"></script>
-<script src="http://mindmup.github.io/bootstrap-wysiwyg/bootstrap-wysiwyg.js"></script>
+		<script src="lib/js/pdf.js"></script>
+		<script type="text/javascript">
+			PDFJS.workerSrc = 'lib/js/pdf.js';
+		</script>
+		<script src="lib/js/jquery.hotkeys.js"></script>
+		<script src="lib/js/bootstrap-wysiwyg.js"></script>
+
 		<style type="text/css">
 			@import url("css/style.css");
 		</style>
-
 		<script src="js/navbar.js"></script>
-
-
 	</head>
 	<body>
 		<div class="container">
