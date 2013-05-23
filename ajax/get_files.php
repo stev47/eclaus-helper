@@ -14,29 +14,27 @@ if ($files = @scandir($path)) {
 $result = array();
 
 foreach ($files as $file) {
-	if (preg_match('/\.(java|c|cpp|txt)(~[0-9]*)?$/i', $file, $matches)) {
-		$result[$file] = array(
-			'type' => 'source',
-			'lang' => $matches[1]
-		);
-	} else if (preg_match('/\.(jpg|png|svg)(~[0-9]*)?$/i', $file, $matches)) {
-		$result[$file] = array(
-			'type' => 'image',
-			'path' => $path_from_root . '/' . $file
-		);
-	} else if (preg_match('/\.(pdf)(~[0-9]*)?$/i', $file, $matches)) {
-		$result[$file] = array(
-			'type' => 'pdf',
-			'path' => $path_from_root . '/' . $file
-		);
 	// Ignored files
-	} else if (preg_match('/\.class$/i', $file, $matches)) {
+	if (preg_match('/\.class$/i', $file, $matches))
 		continue;
+
+	$result[$file] = array(
+		'mime-type' => finfo_file(finfo_open(FILEINFO_MIME_TYPE), $path . '/' . $file),
+		'path' => $path_from_root . '/' . $file
+	);
+
+	if (preg_match('/\.(java|c|cpp|txt)(~[0-9]*)?$/i', $file, $matches)) {
+		$result[$file]['type'] = 'source';
+		$result[$file]['lang'] = $matches[1];
+	} else if ($result[$file]['mime-type'] == "text/plain") {
+		$result[$file]['type'] = 'source';
+		$result[$file]['lang'] = 'txt';
+	} else if (preg_match('/\.(jpg|png|svg)(~[0-9]*)?$/i', $file, $matches)) {
+		$result[$file]['type'] = 'image';
+	} else if (preg_match('/\.(pdf)(~[0-9]*)?$/i', $file, $matches)) {
+		$result[$file]['type'] = 'pdf';
 	} else {
-		$result[$file] = array(
-			'type' => 'other',
-			'path' => $path_from_root . '/' . $file
-		);
+		$result[$file]['type'] = 'other';
 	}
 }
 
