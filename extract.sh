@@ -15,14 +15,14 @@ mv -f $target/tmp/$name/* $target/tmp/
 rm -rf $target/tmp/$name
 
 for f in $(find $target/tmp -name '*.zip'); do 
-	unzip -qqq -B -j $f -d $(dirname $f) -x *.class *.core.prefs;
+	unzip -qqq -B -j $f -d $(dirname $f) -x *.class *.core.prefs 2&> /dev/null;
 	rm $f;
 done
 
 
 
 cp -R $target/tmp/* $target/
-chmod -R a+rw $target/
+chmod -fR a+rw $target/
 rm -rf $target/tmp/*
 rm -rf $target/tmp
 
