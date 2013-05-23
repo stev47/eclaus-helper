@@ -50,21 +50,24 @@ var fn_group_click = function () {
 					$('<img class="img-rounded">').appendTo(pane).attr('src', escape(info.path));
 					break;
 				case 'pdf':
-					$('<canvas id="pdf-canvas">').appendTo(pane);
+					$('<canvas class="pdf-canvas">').appendTo(pane);
 
 					PDFJS.getDocument(escape(info.path)).then(function(pdf) {
 						pdf.getPage(1).then(function(page) {
-							var scale = 1.1;
-							var viewport = page.getViewport(scale);
-
-							var canvas = document.getElementById('pdf-canvas');
+							var origViewport = page.getViewport(1);
+							var canvas = $('.pdf-canvas', pane)[0];
 							var context = canvas.getContext('2d');
-							canvas.height = viewport.height;
-							canvas.width = viewport.width;
+
+							scale = $('#files_content').width() / origViewport.width;
+
+							var scaledViewport = page.getViewport(scale);
+
+							canvas.height = scaledViewport.height;
+							canvas.width = scaledViewport.width;
 
 							var renderContext = {
 								canvasContext: context,
-								viewport: viewport
+								viewport: scaledViewport
 							};
 							page.render(renderContext);
 						});
