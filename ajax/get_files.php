@@ -29,7 +29,7 @@ foreach ($files as $file) {
 	} else if ($result[$file]['mime-type'] == "text/plain") {
 		$result[$file]['type'] = 'source';
 		$result[$file]['lang'] = 'txt';
-	} else if (preg_match('/\.(jpg|png|svg)(~[0-9]*)?$/i', $file, $matches)) {
+	} else if (preg_match('/\.(jpg|jpeg|png|svg)(~[0-9]*)?$/i', $file, $matches)) {
 		$result[$file]['type'] = 'image';
 	} else if (preg_match('/\.(pdf)(~[0-9]*)?$/i', $file, $matches)) {
 		$result[$file]['type'] = 'pdf';
