@@ -50,28 +50,38 @@ var fn_group_click = function () {
 					$('<img class="img-rounded">').appendTo(pane).attr('src', escape(info.path));
 					break;
 				case 'pdf':
-					$('<canvas class="pdf-canvas">').appendTo(pane);
 
 					PDFJS.getDocument(escape(info.path)).then(function(pdf) {
-						pdf.getPage(1).then(function(page) {
-							var origViewport = page.getViewport(1);
-							var canvas = $('.pdf-canvas', pane)[0];
+
+						var top = 0;
+						for (var i = 1; i <= pdf.numPages; i++) {
+							
+							var canvas = $('<canvas class="pdf-canvas" id="page-' + i + '">').appendTo(pane).get(0);
 							var context = canvas.getContext('2d');
 
-							scale = $('#files_content').width() / origViewport.width;
+							// preserve scope variables for callback function to use
+							(function (canvas, context) {
+								pdf.getPage(i).then(function(page) {
+									/*
+									 * Scale to fit width
+									 */
+									var origViewport = page.getViewport(1);
+									scale = $('#files_content').width() / origViewport.width;
+									var scaledViewport = page.getViewport(scale);
 
-							var scaledViewport = page.getViewport(scale);
+									canvas.height = scaledViewport.height;
+									canvas.width = scaledViewport.width;
 
-							canvas.height = scaledViewport.height;
-							canvas.width = scaledViewport.width;
-
-							var renderContext = {
-								canvasContext: context,
-								viewport: scaledViewport
-							};
-							page.render(renderContext);
-						});
+									var renderContext = {
+										canvasContext: context,
+										viewport: scaledViewport
+									};
+									page.render(renderContext);
+								});
+							}(canvas, context));
+						}
 					});
+					break;
 				default:
 					$('<a>').attr('href', escape(info.path)).html(file).appendTo(pane);
 			}
