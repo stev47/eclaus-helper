@@ -32,6 +32,8 @@ var fn_group_click = function () {
 			// Tab-panes
 			var pane = $('<div class="tab-pane fade" id="tab-' + i + '">').appendTo($('#files_content'));
 
+			$('<a class="btn">').attr('href', escape(info.path)).html(file).appendTo(pane);
+
 			switch (info.type) {
 				case 'source':
 					var codeel = $('<pre class="prettyprint linenums">').appendTo(pane);
