@@ -62,7 +62,7 @@ var fn_group_click = function () {
 							var context = canvas.getContext('2d');
 
 							// preserve scope variables for callback function to use
-							(function (canvas, context) {
+							(function (canvas, context, pdf) {
 								pdf.getPage(i).then(function(page) {
 									/*
 									 * Scale to fit width
@@ -78,9 +78,16 @@ var fn_group_click = function () {
 										canvasContext: context,
 										viewport: scaledViewport
 									};
-									page.render(renderContext);
+									(function (page) {
+										page.render(renderContext).onData(function () {
+											page.destroy();
+										});
+									}(page));
+									page.destroy();
+									pdf.destroy();
 								});
-							}(canvas, context));
+							}(canvas, context, pdf));
+							pdf.destroy();
 						}
 					});
 					break;
