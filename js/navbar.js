@@ -1,5 +1,10 @@
 var clear_files = function () {
 	$('#files li').remove();
+	$('#files_content .tab-pane').each(function () {
+		var pdf;
+		if (pdf = $(this).data('pdf'))
+			pdf.destroy();
+	});
 	$('#files_content').empty();
 };
 
@@ -54,6 +59,8 @@ var fn_group_click = function () {
 				case 'pdf':
 
 					PDFJS.getDocument(escape(info.path)).then(function(pdf) {
+						
+						pane.data('pdf', pdf);
 
 						var top = 0;
 						for (var i = 1; i <= pdf.numPages; i++) {
@@ -83,11 +90,8 @@ var fn_group_click = function () {
 											page.destroy();
 										});
 									}(page));
-									page.destroy();
-									pdf.destroy();
 								});
 							}(canvas, context, pdf));
-							pdf.destroy();
 						}
 					});
 					break;
